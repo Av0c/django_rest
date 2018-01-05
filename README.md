@@ -28,11 +28,13 @@ Now it's time to run the project !
 
 ### Starting
 
-Start the local server with the project
+Start the local server:
 
 ```
 python manage.py runserver
 ```
+
+and go to `http://localhost:8000/` to see the Browsable API.
 
 ### Users
 
