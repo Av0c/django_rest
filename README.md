@@ -106,7 +106,7 @@ This project was made as an school assignment at [VAMK](http://www.puv.fi/en/).
 
 Special thanks to..
 
-* My teacher **Timo Kankaanpää** for introducing me to the framework - [timojkankaanpaa](https://github.com/timojkankaanpaa)https://github.com/timojkankaanpaa
+* My teacher **Timo Kankaanpää** for introducing me to the framework - [timojkankaanpaa](https://github.com/timojkankaanpaa)https://github.com/timojkankaanpaa)
 * The [Django REST framework tutorial](http://www.django-rest-framework.org/tutorial/1-serialization/) whose typos forced me to figure things out for myself
 * **Stackoverflow !**
 * Deadlines.
