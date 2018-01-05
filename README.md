@@ -68,39 +68,38 @@ The JSON data is hyperlinked, with which you can use to explore relationships be
 ### Extras
 
 Template and CSS-styling customizations are used, both can be found at:
-- `mysite/templates/rest_framework`
-- `mysite/mysite/static`
+- `mysite/templates/rest_framework/api.html`
+- `mysite/mysite/static/custom.css`
 
-## Deployment
+For **Django** to be able to allow customizations, `settings.py` has been edited:
+```
+...
+TEMPLATES = [
+    {
+        ...
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+    },
+]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'mysite/static'),
+)
+```
 
-Add additional notes about how to deploy this on a live system
+## About
 
-## Built With
+This project was made as an school assignment at [VAMK](http://www.puv.fi/en/).
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+### Author
 
-## Contributing
+- **Quyen Duong** - [av0c](https://github.com/Av0c)
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+### Acknowledgments
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+Special thanks to..
 
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* My teacher **Timo Kankaanpää** for introducing me to the framework - [timojkankaanpaa](https://github.com/timojkankaanpaa)https://github.com/timojkankaanpaa
+* The [Django REST framework tutorial](http://www.django-rest-framework.org/tutorial/1-serialization/) whose typos forced me to figure things out for myself
+* **Stackoverflow !**
+* Deadlines.
