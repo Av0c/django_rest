@@ -1,6 +1,6 @@
 # CryptoCurrency Portfolio Manager
 
-A Django project implementing the **REST_FRAMEWORK** that allows a group to share and manage their cryptocurrency trading portfolios.
+A Django project implementing the **REST_framework** that allows a group to share and manage their cryptocurrency trading portfolios.
 
 ## Getting Started
 
@@ -8,40 +8,38 @@ These instructions will (hopefully) get you up and running the project in no tim
 
 ### Prerequisites
 
-This project was developed with Django using the Django_REST_framework. Make sure you have installed.
+This project was developed with **Django** using the **Django_REST_framework**. Make sure you have both installed.
 
-Version number:
+Versions used for project:
+- python==3.6.4
 - djangorestframework==3.7.7
 - Django==2.0.1
 
-(Lower version will probably works but it's recommend to get the latest version)
+(Lower version will probably work but it's recommend to get the latest version)
 
 ```
 pip install django
 pip install djangorestframework
 ```
 
-### Installing
+### Running
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+Start the local server with the project
 
 ```
-Give the example
+python manage.py runserver
 ```
 
-And repeat
+## Users
 
-```
-until finished
-```
+There're currently 3 users:
+- 'admin'
+- 'dd'
+- 'whale'
 
-End with an example of getting some data out of the system or using it for a little demo
+All users have the same password `password123`
 
-## Running the tests
-
-Explain how to run the automated tests for this system
+'admin' will have extra privileges.
 
 ### Break down into end to end tests
 
