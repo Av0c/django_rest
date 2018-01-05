@@ -8,7 +8,7 @@ These instructions will (hopefully) get you up and running the project in no tim
 
 ### Prerequisites
 
-This project was developed with **Django** using the **Django_REST_framework**. Make sure you have both installed.
+This project was developed with **[Django](https://docs.djangoproject.com/en/2.0/topics/install/#installing-official-release)** using the **[Django_REST_framework](http://www.django-rest-framework.org/tutorial/quickstart/)**. Make sure you have both installed.
 
 Versions used for project:
 - python==3.6.4
@@ -22,7 +22,11 @@ pip install django
 pip install djangorestframework
 ```
 
-### Running
+## Usage
+
+Now it's time to run the project !
+
+### Starting
 
 Start the local server with the project
 
@@ -30,32 +34,42 @@ Start the local server with the project
 python manage.py runserver
 ```
 
-## Users
+### Users
 
 There're currently 3 users:
-- 'admin'
+- 'admin' (have extra privileges)
 - 'dd'
 - 'whale'
 
 All users have the same password `password123`
 
-'admin' will have extra privileges.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+You can easily create a new user using
 
 ```
-Give an example
+python manage.py createsuperuser
 ```
 
-### And coding style tests
+### Concepts
 
-Explain what these tests test and why
+There are 3 available tables:
+- 'users'
+- 'portfolios'
+- 'platforms'
 
-```
-Give an example
-```
+A user can see all portfolios of all users and can create portfolios of their own.
+A user can only update, delete portfolios they own.
+
+Each user can have multiple portfolios, on multiple platforms.
+
+All available platforms are readable to all users but only writable to 'admin'.
+
+The JSON data is hyperlinked, with which you can use to explore relationships between datas.
+
+### Extras
+
+Template and CSS-styling customizations are used, both can be found at:
+- `mysite/templates/rest_framework`
+- `mysite/mysite/static`
 
 ## Deployment
 
