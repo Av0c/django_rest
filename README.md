@@ -62,6 +62,7 @@ A user can only update, delete portfolios they own.
 Each user can have multiple portfolios, on multiple platforms.
 
 All available platforms are readable to all users but only writable to 'admin'.
+All platform's names must be unique.
 
 The JSON data is hyperlinked, with which you can use to explore relationships between datas.
 
@@ -85,6 +86,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'mysite/static'),
 )
 ```
+
+### Known bugs
+
+Sometimes the template and stylings will load wrong or not load at all, refreshing the page fixes this issue.
 
 ## About
 
