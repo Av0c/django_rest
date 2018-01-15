@@ -20,6 +20,16 @@ def api_root(request, format=None):
         'platforms': reverse('platform-list', request=request, format=format),
     })
 
+class CurrentUser(generics.ListAPIView):
+    """
+    Return current user.
+    """
+    def get(self, request):
+        user = request.user
+        return Response({
+            'username': user.username,
+        })
+
 
 class PlatformList(generics.ListCreateAPIView):
     """

@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'e1601127_portfolio',
+        'NAME': 'e1601127_portfolio2',
         'USER': 'e1601127',
         'PASSWORD': 'Avocado98',
         'HOST': 'mysql.cc.puv.fi',

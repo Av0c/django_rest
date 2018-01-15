@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    userHttp("http://localhost:8000");
-    portfolioHttp("http://localhost:8000");
-
+    userHttp();
+    portfolioHttp();
+    getCurrentUser();
 
     $(".toggle-button").each(function(i, obj) {
         $(document).find($(".toggle-button")[i]).click(function() {
@@ -16,25 +16,34 @@ $(document).ready(function() {
     });
 });
 
-function debug() {
-    /* console.log("DEBUG OK."); */
-
+function getCurrentUser() {
     var request = new XMLHttpRequest();
-    request.open("GET", "http://localhost:8000/users/", false);
-    request.send();
-    var array = JSON.parse(request.responseText);
-    $.each(array.results, function(i, userObj) {
-        $.each(userObj.portfolio, function(i, portfolioObj) {
-            if (portfolioObj.hasOwnProperty("ticker")) {
-                var test = portfolioObj.ticker + " (" + portfolioObj.amount + ")";
-                console.log(test);
-                $(".section-test").append(test);
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            var accountText = $("<span></span>");
+            var accountLink = $("<a></a>");
+
+            $(".login").append(accountText);
+            $(".login").append(accountLink);
+
+            if (response.username == "") {
+                accountText.text("You are not currently logged in - ");
+                accountLink.attr("href", "http://localhost:8000/api-auth/login/?next=/static/rest_framework/portfolio/index.html");
+                accountLink.text("Login");
+            } else {
+                accountText.html("You are login as <b>" + response.username + "</b> - ");
+                accountLink.attr("href", "http://localhost:8000/api-auth/logout/?next=/static/rest_framework/portfolio/index.html");
+                accountLink.text("Logout");
             }
-        });
-    });
+            console.log(response)
+        }
+    }
+    request.open("GET", "http://localhost:8000/users/current_user", true);
+    request.send();
 }
 
-function userHttp(host) {
+function userHttp() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -70,12 +79,16 @@ function userHttp(host) {
                 userRow.append(userData);
             });
         }
-    };
+    }
     request.open("GET", "http://localhost:8000/users/", true);
     request.send();
 }
 
-function portfolioHttp(host) {
+function portfolioHttp() {
+    // Remove everything before adding
+    $(".portfolio-data").remove();
+    $(".portfolio-add").remove();
+
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -156,8 +169,6 @@ function portfolioHttp(host) {
                             if (this.readyState == 4) { /*  && this.status == 200 */
                                 /* var res = JSON.parse(reqPOST.responseText);
                                 console.log(res); */
-                                $(".portfolio-data").remove();
-                                $(".portfolio-add").remove();
                                 portfolioHttp("http://localhost:8000");
                             }
                         }
@@ -186,7 +197,6 @@ function portfolioHttp(host) {
                             if (this.readyState == 4) { /*  && this.status == 200 */
                                 /* var res = JSON.parse(reqDel.responseText);
                                 console.log(res); */
-                                $(".portfolio-data").remove();
                                 portfolioHttp("http://localhost:8000");
                             }
                         }
@@ -197,7 +207,7 @@ function portfolioHttp(host) {
                 });
             });
 
-            // ADD BUTTON
+            // ADD ROW
             var rowAdd = $("<tr></tr>", {"class" : "portfolio-add"});
             $(".portfolio-table").append(rowAdd);
             rowAdd.append($("<td></td>")); //Id
@@ -242,8 +252,6 @@ function portfolioHttp(host) {
                     if (this.readyState == 4) { /*  && this.status == 200 */
                         var res = JSON.parse(reqPOST.responseText);
                         console.log(res);
-                        $(".portfolio-data").remove();
-                        $(".portfolio-add").remove();
                         portfolioHttp("http://localhost:8000");
                     }
                 }

@@ -5,6 +5,7 @@ from portfolio import views
 
 urlpatterns = format_suffix_patterns([
     url(r'^$', views.api_root),
+    url(r'^users/current_user', views.CurrentUser.as_view(), name='current-user'),
     url(r'^portfolios/$', views.PortfolioList.as_view(), name='portfolio-list'),
     url(r'^portfolios/(?P<pk>[0-9]+)/$', views.PortfolioDetail.as_view(), name='portfolio-detail'),
     url(r'^users/$', views.UserList.as_view(), name='user-list'),

@@ -53,8 +53,9 @@ a:hover {
 .section {
     margin: 20px;
 }
-.login a {
+.login {
     float: right;
+    margin-top: 0;
     margin-bottom: 20px;
 }
 .toggleable {
@@ -109,7 +110,7 @@ table {
 }
 th, td {
     text-align: left;
-    padding: 8px;
+    padding: 12px 8px;
     border: none;
 }
 th {
@@ -168,7 +169,7 @@ td:hover {
 }
 .portfolio-table .portfolio-header th:nth-child(8) {
     /* Edit, Delete */
-    width: 14%;
+    width: 16%;
 }
 .table-input {
     padding: 0;
@@ -178,7 +179,7 @@ td:hover {
 input {
     box-sizing: border-box; /* I regret not understanding this sooner, saved my life! (Try removing it and see) */
     width: 100%;
-    padding: 8px;
+    padding: 12px 8px;
     outline: none;
     border: none;
     box-shadow: 0px -1px 0px 0px #90A4AE inset;
@@ -193,18 +194,18 @@ input:focus {
 }
 .data-button {
     text-align: center;
+    padding: 0;
 }
 .data-button:hover {
     background-color: #EEEEEE;
 }
 .table-button {
-    font-family: monospace;
-    font-size: 15px;
-    display: inline-block;
-    padding: 4px 0;
-    width: 100px;
     font-family: "Roboto Mono", monospace;
     font-size: 16px;
+    display: inline-block;
+    padding: 4px 0;
+    margin: 0;
+    width: 100px;
     color: #242729;
     background-color: #fafafa;
     border: none;
