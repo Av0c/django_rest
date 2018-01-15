@@ -82,50 +82,53 @@ function portfolioHttp(host) {
             var response = JSON.parse(this.responseText);
             $(".portfolio-count").text("Total portfolios: " + response.count);
             $.each(response.results, function(i, portfolioObj) {
-                var portfolioRow = $("<tr></tr>", {"class" : "portfolio-data"});
-                $(".portfolio-table").append(portfolioRow);
+                var rowPortfolio = $("<tr></tr>", {"class" : "portfolio-data"});
+                $(".portfolio-table").append(rowPortfolio);
 
                 var dataId = $("<td></td>");
                 dataId.text(portfolioObj.id);
-                portfolioRow.append(dataId);
+                rowPortfolio.append(dataId);
 
                 var dataTicker = $("<td></td>");
                 dataTicker.text(portfolioObj.ticker);
-                portfolioRow.append(dataTicker);
+                rowPortfolio.append(dataTicker);
 
                 var dataName = $("<td></td>");
                 dataName.text(portfolioObj.name);
-                portfolioRow.append(dataName);
+                rowPortfolio.append(dataName);
 
                 var dataAmount = $("<td></td>");
                 dataAmount.text(portfolioObj.amount);
-                portfolioRow.append(dataAmount);
+                rowPortfolio.append(dataAmount);
 
                 var dataPlatform = $("<td></td>");
                 dataPlatform.text(portfolioObj.platform);
-                portfolioRow.append(dataPlatform);
+                rowPortfolio.append(dataPlatform);
 
                 var dataOwner = $("<td></td>");
                 var ownerUrl = $("<a></a>");
                 ownerUrl.attr("href", portfolioObj.owner.url);
                 ownerUrl.text(portfolioObj.owner.username);
                 dataOwner.append(ownerUrl);
-                portfolioRow.append(dataOwner);
+                rowPortfolio.append(dataOwner);
 
                 var dataUrl = $("<td></td>");
                 var portfolioUrl = $("<a></a>");
                 portfolioUrl.attr("href", portfolioObj.url);
                 portfolioUrl.html(portfolioObj.url);
                 dataUrl.append(portfolioUrl);
-                portfolioRow.append(dataUrl);
+                rowPortfolio.append(dataUrl);
 
+                // EDIT BUTTON
+                var dataEdit = $("<td></td>", {"class" : "data-button"});
+                rowPortfolio.append(dataEdit);
                 var edit = $("<button></button>", {"class" : "table-button edit"});
-                edit.html("Edit");
-                portfolioRow.append(edit);
+                dataEdit.append(edit);
+                edit.html("EDIT");
 
                 edit.click(function() {
-                    portfolioRow.addClass("row-edit");
-                    edit.html("Save");
+                    edit.addClass("edit-save");
+                    edit.html("SAVE");
 
                     var inputTicker = $("<input>", {"type" : "text", "class" : "ticker", "value": dataTicker.text()});
                     dataTicker.replaceWith($("<td></td>", {"class" : "table-input"}).append(inputTicker));
@@ -151,18 +154,104 @@ function portfolioHttp(host) {
                         var reqPOST = new XMLHttpRequest();
                         reqPOST.onreadystatechange = function() {
                             if (this.readyState == 4) { /*  && this.status == 200 */
+                                /* var res = JSON.parse(reqPOST.responseText);
+                                console.log(res); */
                                 $(".portfolio-data").remove();
+                                $(".portfolio-add").remove();
                                 portfolioHttp("http://localhost:8000");
                             }
                         }
                         reqPOST.open("PUT", "http://localhost:8000/portfolios/" + portfolioObj.id + "/", true);
-                        reqPOST.setRequestHeader("Authorization", "Basic " + btoa("admin:password123"));
                         reqPOST.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
                         reqPOST.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
                         reqPOST.send(jsonData);
-                        edit.html("Edit");
+                        edit.html("SAVING...");
                     });
                 });
+
+
+                // DELETE BUTTON
+                var dataDelete = $("<td></td>", {"class" : "data-button"});
+                rowPortfolio.append(dataDelete);
+                var del = $("<button></button>", {"class" : "table-button delete"});
+                dataDelete.append(del);
+                del.html("DELETE");
+
+                del.click(function() {
+                    del.addClass("delete-sure");
+                    del.html("SURE?");
+                    del.click(function() {
+                        var reqDel = new XMLHttpRequest();
+                        reqDel.onreadystatechange = function() {
+                            if (this.readyState == 4) { /*  && this.status == 200 */
+                                /* var res = JSON.parse(reqDel.responseText);
+                                console.log(res); */
+                                $(".portfolio-data").remove();
+                                portfolioHttp("http://localhost:8000");
+                            }
+                        }
+                        reqDel.open("DELETE", "http://localhost:8000/portfolios/" + portfolioObj.id + "/", true);
+                        reqDel.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+                        reqDel.send();
+                    });
+                });
+            });
+
+            // ADD BUTTON
+            var rowAdd = $("<tr></tr>", {"class" : "portfolio-add"});
+            $(".portfolio-table").append(rowAdd);
+            rowAdd.append($("<td></td>")); //Id
+
+            //Ticker
+            var dataTicker = $("<td></td>", {"class" : "table-input"});
+            var inputAddTicker = $("<input>", {"type" : "text", "class" : "ticker"});
+            dataTicker.append(inputAddTicker);
+            rowAdd.append(dataTicker);
+
+            //Name
+            var dataName = $("<td></td>", {"class" : "table-input"});
+            var inputAddName = $("<input>", {"type" : "text", "class" : "name"});
+            rowAdd.append(dataName.append(inputAddName));
+
+            //Amount
+            var dataAmount = $("<td></td>", {"class" : "table-input"});
+            var inputAddAmount = $("<input>", {"type" : "text", "class" : "name"});
+            rowAdd.append(dataAmount.append(inputAddAmount));
+
+            var dataPlatform = $("<td></td>");
+            rowAdd.append(dataPlatform); //Platform
+            rowAdd.append($("<td></td>")); //Owner
+            rowAdd.append($("<td></td>")); //Url
+
+            //Add button
+            var dataSave = $("<td></td>", {"class" : "data-button", "colspan" : "2"});
+            var sav = $("<button></button>", {"class" : "table-button save"});
+            rowAdd.append(dataSave.append(sav));
+            sav.html("ADD");
+            sav.click(function() {
+                var json = new Object();
+
+                json.ticker = inputAddTicker.val();
+                json.name = inputAddName.val();
+                json.amount = inputAddAmount.val();
+                json.platform = dataPlatform.text();
+
+                var jsonData = JSON.stringify(json);
+                var reqPOST = new XMLHttpRequest();
+                reqPOST.onreadystatechange = function() {
+                    if (this.readyState == 4) { /*  && this.status == 200 */
+                        var res = JSON.parse(reqPOST.responseText);
+                        console.log(res);
+                        $(".portfolio-data").remove();
+                        $(".portfolio-add").remove();
+                        portfolioHttp("http://localhost:8000");
+                    }
+                }
+                reqPOST.open("POST", "http://localhost:8000/portfolios/", true);
+                reqPOST.setRequestHeader("X-CSRFToken", readCookie("csrftoken"));
+                reqPOST.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                reqPOST.send(jsonData);
+                sav.html("ADDING..");
             });
         }
     }
