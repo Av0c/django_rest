@@ -29,7 +29,7 @@ class PortfolioSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Portfolio
-        fields = ('url', 'ticker', 'name', 'amount', 'platform', 'owner')
+        fields = ('url', 'id', 'ticker', 'name', 'amount', 'platform', 'owner')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

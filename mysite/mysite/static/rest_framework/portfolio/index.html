@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Django REST Framework</title>
+</head>
+<body>
+    <div class="container">
+        <div class="section-test">
+            <a href="http://localhost:8000/api-auth/login/?next=/static/rest_framework/portfolio/index.html">Login</a>
+        </div>
+        <div class="section">
+            <button class="toggle-button">User</button>
+            <div class="user toggleable">
+                <div class="content list">
+                    <table class="user-table">
+                        <p class="user-count count"></p>
+                        <tr class="user-header">
+                            <th>ID</th>
+                            <th>USERNAME</th>
+                            <th>PORTFOLIOS</th>
+                            <th>URL</th>
+                        </tr>
+                    </table>
+                    <p class="note">*Users can not be edited or deleted via API.</p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <button class="toggle-button">Portfolio</button>
+            <div class="portfolio toggleable">
+                <div class="content list">
+                    <table class="portfolio-table">
+                        <p class="portfolio-count count"></p>
+                        <tr class="portfolio-header">
+                            <th>ID</th>
+                            <th>TICKER</th>
+                            <th>NAME</th>
+                            <th>AMOUNT</th>
+                            <th>PLATFORM</th>
+                            <th>OWNER</th>
+                            <th>URL</th>
+                            <th colspan="2"></th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <button class="toggle-button">Platform</button>
+            <div class="platform toggleable">
+                <div class="content list">
+                    List all portfolios here.<br>
+                    List all portfolios here.<br>
+                    List all portfolios here.<br>
+                    List all portfolios here.<br>
+                    List all portfolios here.<br>
+                    List all portfolios here.<br>
+                    List all portfolios here.<br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        Made by <a href="https://github.com/Av0c/django_rest">Av0c</a> @ VAMK (2018)
+    </footer>
+</body>
+</html>

@@ -1,0 +1,192 @@
+html, body {
+    height: 94%;
+    margin: 0;
+    background-color: #21252b;
+    color: #bdbdbd;
+}
+html {
+    overflow-y: scroll;
+}
+a, a:visited {
+    text-decoration: none;
+    color: #42A5F5;
+}
+a:hover {
+    text-decoration: underline;
+}
+* {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    transition: width 0.4s;
+}
+::-webkit-scrollbar:hover {
+    width: 10px;
+    transition: width 0.4s;
+}
+::-webkit-scrollbar-track {
+    background: none;
+}
+::-webkit-scrollbar-track:hover {
+    width: 15px;
+    background: #424242;
+}
+::-webkit-scrollbar-thumb {
+    background: #BDBDBD;
+    border-radius: 20px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #E0E0E0;
+}
+.container {
+    min-height: 100%;
+    margin-bottom: 20px;
+}
+.footer {
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    margin-top: -0px;
+}
+.section {
+    margin: 20px;
+}
+.toggleable {
+    border-radius: 0 0 10px 10px;
+    background-color: #fafafa;
+    color: #212121;
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+.toggle-button {
+    background-color: #2196F3;
+    color: #fafafa;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-size: 20px;
+}
+.toggle-button:hover {
+    background-color: #1976D2;
+}
+.toggle-button:after {
+    content: '\2B9D';
+    font-size: 18px;
+    font-family: monospace;
+    color: #fafafa;
+    float: right;
+    margin-left: 5px;
+    transition: transform 0.4s ease-out;
+}
+.toggle-button.active:after {
+    transform: scaleY(-1);
+}
+.content {
+    padding: 18px;
+}
+.count {
+    margin-top: 0;
+}
+.note {
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: none;
+}
+th {
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    background-color: #CFD8DC;
+    color: #212121;
+}
+td {
+    background-color: #EEEEEE;
+}
+td:hover {
+    background-color: #E0E0E0;
+}
+.user-table .user-header th:nth-child(1) {
+    /* ID */
+    width: 4%;
+}
+.user-table .user-header th:nth-child(2) {
+    /* Username */
+    width: 18%;
+}
+.user-table .user-header th:nth-child(3) {
+    /* Portfolios */
+}
+.user-table .user-header th:nth-child(4) {
+    /* Url */
+    width: 25%;
+}
+.portfolio-table .portfolio-header th:nth-child(1) {
+    /* ID */
+    width: 4%;
+}
+.portfolio-table .portfolio-header th:nth-child(2) {
+    /* Ticker */
+    width: 10%;
+}
+.portfolio-table .portfolio-header th:nth-child(3) {
+    /* Name */
+    width: 12%;
+}
+.portfolio-table .portfolio-header th:nth-child(4) {
+    /* Amount */
+    width: 7%;
+}
+.portfolio-table .portfolio-header th:nth-child(5) {
+    /* Platform */
+}
+.portfolio-table .portfolio-header th:nth-child(6) {
+    /* Owner */
+    width: 8%;
+}
+.portfolio-table .portfolio-header th:nth-child(7) {
+    /* URL */
+    width: 25%;
+}
+.portfolio-table .portfolio-header th:nth-child(8) {
+    /* Edit, Delete */
+    width: 6%;
+}
+.table-input {
+    padding: 0;
+}
+.row-edit {
+}
+input {
+    box-sizing: border-box; /* I regret not understanding this sooner, saved my life! (Try removing it and see) */
+    width: 100%;
+    padding: 8px;
+    outline: none;
+    border: none;
+    box-shadow: 0px -1px 0px 0px #90A4AE inset;
+    background-color: #FAFAFA;
+    transition: box-shadow 0.4s;
+}
+input:hover {
+    box-shadow: 0px -2px 0px 0px #90A4AE inset;
+}
+input:focus {
+    box-shadow: 0px -2px 0px 0px #417cf1 inset;
+}
+button.edit {
+    
+}
