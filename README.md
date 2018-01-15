@@ -37,6 +37,7 @@ python manage.py runserver
 ```
 
 and go to `http://localhost:8000/` to see the built-in Browsable API.
+
 **For a custom-built UI, go to `http://localhost:8000/static/rest_framework/portfolio/index.html` instead**.
 
 ### Users
