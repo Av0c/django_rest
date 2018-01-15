@@ -22,6 +22,8 @@ pip install django
 pip install djangorestframework
 ```
 
+*It's recommend to use the latest version of Chrome to run.*
+
 ## Usage
 
 Now it's time to run the project !
@@ -34,18 +36,16 @@ Start the local server:
 python manage.py runserver
 ```
 
-and go to `http://localhost:8000/` to see the Browsable API.
+and go to `http://localhost:8000/` to see the built-in Browsable API.
+**For a custom-built UI, go to `http://localhost:8000/static/rest_framework/portfolio/index.html` instead**.
 
 ### Users
 
-There're currently 3 users:
-- 'admin' (have extra privileges)
-- 'dd'
-- 'whale'
-
 All users have the same password `password123`
 
-You can easily create a new user using
+`admin` will have extra privileges.
+
+You can only create a new user using
 
 ```
 python manage.py createsuperuser
@@ -72,7 +72,7 @@ The JSON data is hyperlinked, with which you can use to explore relationships be
 
 Template and CSS-styling customizations are used, both can be found at:
 - `mysite/templates/rest_framework/api.html`
-- `mysite/mysite/static/custom.css`
+- `mysite/mysite/static/rest_framework/portfolio/bootstrap/custom.css`
 
 For **Django** to be able to allow customizations, `settings.py` has been edited:
 ```
@@ -106,7 +106,7 @@ This project was made as an school assignment at [VAMK](http://www.puv.fi/en/).
 
 Special thanks to..
 
-* My teacher **Timo Kankaanpää** for introducing me to the framework - [timojkankaanpaa](https://github.com/timojkankaanpaa)
-* The [Django REST framework tutorial](http://www.django-rest-framework.org/tutorial/1-serialization/) whose typos forced me to figure things out for myself
+* My teacher **Timo Kankaanpää** for introducing me to the framework - [timojkankaanpaa](https://github.com/timojkankaanpaa).
+* The [Django REST framework tutorial](http://www.django-rest-framework.org/tutorial/1-serialization/) whose typos forced me to figure things out for myself.
 * **Stackoverflow !**
 * Deadlines.
