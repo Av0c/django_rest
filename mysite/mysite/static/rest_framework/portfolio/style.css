@@ -53,6 +53,10 @@ a:hover {
 .section {
     margin: 20px;
 }
+.login a {
+    float: right;
+    margin-bottom: 20px;
+}
 .toggleable {
     border-radius: 0 0 10px 10px;
     background-color: #fafafa;
@@ -219,6 +223,9 @@ input:focus {
 .table-button.edit-save {
     color: #F5F5F5;
     background-color: #66BB6A;
+}
+.table-button.add {
+    background-color: #FFF59D;
 }
 .table-button:hover {
     outline: none;

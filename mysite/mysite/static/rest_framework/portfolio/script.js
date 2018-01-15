@@ -225,7 +225,7 @@ function portfolioHttp(host) {
 
             //Add button
             var dataSave = $("<td></td>", {"class" : "data-button", "colspan" : "2"});
-            var sav = $("<button></button>", {"class" : "table-button save"});
+            var sav = $("<button></button>", {"class" : "table-button add"});
             rowAdd.append(dataSave.append(sav));
             sav.html("ADD");
             sav.click(function() {
